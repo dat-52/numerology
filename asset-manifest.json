@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/numerology/static/css/main.2285a4a0.css",
+    "main.js": "/numerology/static/js/main.d6ad438a.js",
+    "static/js/453.f1bcfb06.chunk.js": "/numerology/static/js/453.f1bcfb06.chunk.js",
+    "static/media/kidbg.png": "/numerology/static/media/kidbg.4bfe43934b234ea69b9b.png",
+    "index.html": "/numerology/index.html",
+    "main.2285a4a0.css.map": "/numerology/static/css/main.2285a4a0.css.map",
+    "main.d6ad438a.js.map": "/numerology/static/js/main.d6ad438a.js.map",
+    "453.f1bcfb06.chunk.js.map": "/numerology/static/js/453.f1bcfb06.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2285a4a0.css",
+    "static/js/main.d6ad438a.js"
+  ]
+}
