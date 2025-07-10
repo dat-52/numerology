@@ -10,7 +10,7 @@ import NumerologyKidsForm from './NumerologyKidsForm';
 import BlogPage from './BlogPage';
 import AuthModal from './AuthModal';
 import { auth, provider, signInWithPopup } from './firebase';
-import { signOut } from 'firebase/auth';
+import { signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import './App.css';
 
 function App() {
@@ -18,6 +18,7 @@ function App() {
   const [page, setPage] = useState('adult');
   const [authOpen, setAuthOpen] = useState(false);
   const [user, setUser] = useState(null);
+  const [authError, setAuthError] = useState('');
 
   const handleCalculate = () => {
     setShowResult(true);
@@ -28,8 +29,9 @@ function App() {
       const result = await signInWithPopup(auth, provider);
       setUser(result.user);
       setAuthOpen(false);
+      setAuthError('');
     } catch (err) {
-      alert('Login failed!');
+      setAuthError('Google login failed!');
     }
   };
 
@@ -37,6 +39,30 @@ function App() {
     await signOut(auth);
     setUser(null);
     setAuthOpen(false);
+  };
+
+  const handleEmailSignUp = async (email, password) => {
+    setAuthError('');
+    try {
+      const result = await createUserWithEmailAndPassword(auth, email, password);
+      // Optionally set displayName
+      await updateProfile(result.user, { displayName: email.split('@')[0] });
+      setUser(result.user);
+      setAuthOpen(false);
+    } catch (err) {
+      setAuthError(err.message || 'Sign up failed!');
+    }
+  };
+
+  const handleEmailSignIn = async (email, password) => {
+    setAuthError('');
+    try {
+      const result = await signInWithEmailAndPassword(auth, email, password);
+      setUser(result.user);
+      setAuthOpen(false);
+    } catch (err) {
+      setAuthError(err.message || 'Sign in failed!');
+    }
   };
 
   return (
@@ -53,6 +79,9 @@ function App() {
         onLogin={handleLogin}
         user={user}
         onLogout={handleLogout}
+        onEmailSignUp={handleEmailSignUp}
+        onEmailSignIn={handleEmailSignIn}
+        error={authError}
       />
       {page === 'blog' ? (
         <BlogPage />

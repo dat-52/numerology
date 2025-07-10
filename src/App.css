@@ -234,7 +234,19 @@ body, html, #root, .App {
     max-width: 98vw;
     font-size: 1rem;
   }
-  .intro-section, .numerology-report {
+  .intro-section {
+    padding: 12px 4px 10px 4px;
+    max-width: 98vw;
+    margin: 18px auto 0 auto;
+    font-size: 1rem;
+  }
+  .intro-section h1 {
+    font-size: 1.1rem;
+  }
+  .intro-section p {
+    font-size: 0.98rem;
+  }
+  .numerology-report {
     padding: 14px 6px;
     max-width: 98vw;
   }
@@ -357,4 +369,25 @@ body, html, #root, .App {
   box-shadow: 0 2px 24px 0 #000a 0 0 32px #7fffd4;
   text-align: center;
   font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.download-pdf-btn {
+  background: #ffe600;
+  color: #23243a;
+  border: none;
+  border-radius: 18px;
+  padding: 14px 32px;
+  font-size: 1.15rem;
+  font-family: 'Cinzel', serif;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 12px #ffe60055;
+  margin: 0 auto;
+  display: block;
+  transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+}
+.download-pdf-btn:hover {
+  background: #7fffd4;
+  color: #23243a;
+  box-shadow: 0 4px 24px #7fffd455;
 }

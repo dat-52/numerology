@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import kidbg from './assets/kidbg.png';
 import NumerologyKidsBackground from './NumerologyKidsBackground';
+import { fetchNumerologyReport } from './ai';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 import './NumerologyKidsForm.css';
-
 
 function NumerologyKidsForm() {
   const [form, setForm] = useState({
@@ -20,7 +22,9 @@ function NumerologyKidsForm() {
     motherMonth: '',
     motherYear: ''
   });
-  const [showResult, setShowResult] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [result, setResult] = useState('');
+  const resultRef = useRef();
 
   const days = Array.from({ length: 31 }, (_, i) => i + 1);
   const months = [
@@ -31,9 +35,30 @@ function NumerologyKidsForm() {
 
   const handleChange = (field, value) => setForm({ ...form, [field]: value });
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
-    setShowResult(true);
+    setLoading(true);
+    setResult('');
+    try {
+      const aiResult = await fetchNumerologyReport(form, 'kids');
+      setResult(aiResult);
+    } catch (err) {
+      setResult('Sorry, something went wrong.');
+    }
+    setLoading(false);
+  };
+
+  const handleDownloadPDF = async () => {
+    if (!resultRef.current) return;
+    const canvas = await html2canvas(resultRef.current);
+    const imgData = canvas.toDataURL('image/png');
+    const pdf = new jsPDF({
+      orientation: 'p',
+      unit: 'px',
+      format: [canvas.width, canvas.height]
+    });
+    pdf.addImage(imgData, 'PNG', 0, 0, canvas.width, canvas.height);
+    pdf.save('numerology-kids-report.pdf');
   };
 
   return (
@@ -122,14 +147,14 @@ function NumerologyKidsForm() {
               </div>
             </label>
           </fieldset>
-          <button type="submit" className="calculate-btn kids-calc-btn">Calculate</button>
+          <button type="submit" className="calculate-btn kids-calc-btn">{loading ? 'Calculating...' : 'Calculate'}</button>
         </form>
-        {showResult && (
-          <div className="kids-result-area">
-            {/* Result will be shown here */}
-            <h3>Numerology for Kids Report</h3>
-            <p>This is a placeholder for the numerology report for your child. The detailed analysis will appear here after integration with AI.</p>
-          </div>
+        <div className="kids-result-area" ref={resultRef}>
+          {loading && <span>Loading AI result...</span>}
+          {!loading && result && <div style={{whiteSpace: 'pre-line'}}>{result}</div>}
+        </div>
+        {!loading && result && (
+          <button className="download-pdf-btn" onClick={handleDownloadPDF} style={{marginTop: 16}}>Download PDF</button>
         )}
       </div>
     </NumerologyKidsBackground>

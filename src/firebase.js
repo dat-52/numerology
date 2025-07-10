@@ -2,12 +2,12 @@ import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyC-DYVKSTlJJZP8dXqk31YvBlK901o3S7o",
+    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
     authDomain: "numerology-6b40d.firebaseapp.com",
-    projectId: "numerology-6b40d",
+    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
     storageBucket: "numerology-6b40d.firebasestorage.app",
     messagingSenderId: "691473383826",
-    appId: "1:691473383826:web:85c20f0ee4a5109251414b",
+    appId: process.env.REACT_APP_FIREBASE_APP_ID,
     measurementId: "G-D5CHWBVNMV"
 };
 
