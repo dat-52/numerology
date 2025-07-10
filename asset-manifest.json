@@ -1,20 +1,20 @@
 {
   "files": {
     "main.css": "/numerology/static/css/main.5f928c1c.css",
-    "main.js": "/numerology/static/js/main.80b9f1b3.js",
+    "main.js": "/numerology/static/js/main.4f1c60c1.js",
     "static/js/977.107bff65.chunk.js": "/numerology/static/js/977.107bff65.chunk.js",
     "static/js/732.cbfb5964.chunk.js": "/numerology/static/js/732.cbfb5964.chunk.js",
     "static/js/453.f1bcfb06.chunk.js": "/numerology/static/js/453.f1bcfb06.chunk.js",
     "static/media/kidbg.png": "/numerology/static/media/kidbg.4bfe43934b234ea69b9b.png",
     "index.html": "/numerology/index.html",
     "main.5f928c1c.css.map": "/numerology/static/css/main.5f928c1c.css.map",
-    "main.80b9f1b3.js.map": "/numerology/static/js/main.80b9f1b3.js.map",
+    "main.4f1c60c1.js.map": "/numerology/static/js/main.4f1c60c1.js.map",
     "977.107bff65.chunk.js.map": "/numerology/static/js/977.107bff65.chunk.js.map",
     "732.cbfb5964.chunk.js.map": "/numerology/static/js/732.cbfb5964.chunk.js.map",
     "453.f1bcfb06.chunk.js.map": "/numerology/static/js/453.f1bcfb06.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.5f928c1c.css",
-    "static/js/main.80b9f1b3.js"
+    "static/js/main.4f1c60c1.js"
   ]
 }
