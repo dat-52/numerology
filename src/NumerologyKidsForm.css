@@ -1,0 +1,224 @@
+.kids-form-wrapper {
+  background: rgba(44, 20, 60, 0.92);
+  border-radius: 20px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.13);
+  padding: 36px 28px 28px 28px;
+  margin: 40px auto 0 auto;
+  max-width: 600px;
+  color: #e0c97f;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  text-align: left;
+}
+.kids-form-wrapper h2 {
+  text-align: center;
+  font-size: 2rem;
+  font-family: 'Cinzel', serif;
+  color: #7fffd4;
+  margin-bottom: 10px;
+}
+.kids-form-desc {
+  text-align: center;
+  font-size: 1.1rem;
+  margin-bottom: 18px;
+  color: #ffe600;
+}
+.numerology-kids-form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+.numerology-kids-form fieldset {
+  border: 1.5px solid #7fffd4;
+  border-radius: 14px;
+  padding: 18px 16px 10px 16px;
+  margin-bottom: 8px;
+  background: rgba(34, 20, 40, 0.85);
+}
+.numerology-kids-form legend {
+  color: #7fffd4;
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  padding: 0 8px;
+}
+.numerology-kids-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 10px;
+  color: #e0c97f;
+  font-size: 1.08rem;
+}
+.numerology-kids-form input,
+.numerology-kids-form select {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  font-size: 1rem;
+  background: rgba(34, 20, 40, 0.85);
+  color: #e0c97f;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  box-shadow: 0 0 4px #7fffd4 inset;
+}
+.numerology-kids-form input:focus,
+.numerology-kids-form select:focus {
+  outline: 2px solid #7fffd4;
+}
+.dob-fields {
+  display: flex;
+  gap: 8px;
+}
+.kids-calc-btn {
+  margin-top: 10px;
+  padding: 12px 0;
+  background: linear-gradient(90deg, #7fffd4 0%, #23243a 100%);
+  color: #23243a;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  font-family: 'Cinzel', serif;
+  letter-spacing: 1px;
+  box-shadow: 0 0 8px #7fffd4;
+}
+.kids-calc-btn:hover {
+  background: #23243a;
+  color: #7fffd4;
+  box-shadow: 0 0 16px #7fffd4;
+}
+.kids-result-area {
+  margin-top: 32px;
+  background: rgba(255,255,255,0.10);
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  color: #fff;
+  font-size: 1.1rem;
+  padding: 24px 18px;
+  text-align: center;
+}
+@media (max-width: 700px) {
+  .kids-form-wrapper {
+    padding: 12px 2px 10px 2px;
+    max-width: 98vw;
+    font-size: 1rem;
+  }
+  .numerology-kids-form fieldset {
+    padding: 10px 4px 6px 4px;
+  }
+  .kids-result-area {
+    font-size: 1rem;
+    padding: 12px 4px;
+  }
+} 
+.kids-bg-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 24px;
+  overflow: hidden;
+  margin: 0 auto;
+  background: linear-gradient(120deg, #1a1026 0%, #23243a 60%, #2d1b3a 100%);
+}
+.kids-bg-canvas-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  border-radius: 24px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+.kids-bg-canvas {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  border-radius: 24px;
+}
+.kids-bg-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(26, 16, 38, 0.65);
+  z-index: 2;
+  border-radius: 24px;
+}
+.kids-bg-content {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  padding: 60px 0 40px 0;
+}
+.kids-bg-image {
+  position: relative;
+  margin-top: -50px;
+  margin-bottom: 28px;
+  z-index: 4;
+  width: 480px;
+  height: 290px; /* hoặc đúng tỷ lệ ảnh của bạn, ví dụ 4:3, 16:9... */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 12px 36px 0 #0006, 0 4px 32px 0 #ffe60044;
+  border-radius: 24px;
+  background: rgba(255,255,255,0.08);
+  overflow: hidden; /* đổi từ visible sang hidden để ảnh không bị tràn */
+}
+.kids-bg-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* hoặc contain nếu muốn toàn bộ ảnh luôn hiển thị */
+  filter: drop-shadow(0 4px 18px #ffe60099) drop-shadow(0 2px 16px #7fffd4aa);
+  border-radius: 24px;
+}
+@media (max-width: 900px) {
+  .kids-bg-image {
+    width: 160px;
+    height: 160px;
+    margin-top: -60px;
+    margin-bottom: 16px;
+    border-radius: 18px;
+  }
+  .kids-bg-image img {
+    border-radius: 18px;
+  }
+  .kids-bg-wrapper, .kids-bg-canvas-wrapper {
+    min-height: 600px;
+    border-radius: 14px;
+  }
+  .kids-bg-content {
+    padding: 18px 0;
+    min-height: 600px;
+  }
+}
+@media (max-width: 600px) {
+  .kids-bg-image {
+    width: 100px;
+    height: 100px;
+    margin-top: -20px;
+    margin-bottom: 8px;
+    border-radius: 10px;
+  }
+  .kids-bg-image img {
+    border-radius: 10px;
+  }
+  .kids-bg-wrapper, .kids-bg-canvas-wrapper {
+    min-height: 400px;
+    border-radius: 8px;
+  }
+  .kids-bg-content {
+    padding: 8px 0;
+    min-height: 400px;
+  }
+} 

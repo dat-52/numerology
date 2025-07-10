@@ -36,3 +36,325 @@
     transform: rotate(360deg);
   }
 }
+
+body, html, #root, .App {
+  height: 100%;
+  margin: 0;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  background: linear-gradient(135deg, #1a1026 0%, #23243a 40%, #2d1b3a 70%, #0a0a13 100%);
+  min-height: 100vh;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: rgba(26, 16, 38, 0.95);
+  padding: 16px 0 8px 0;
+  font-size: 2.5rem;
+  font-family: 'Cinzel', serif;
+  font-weight: bold;
+  color: #e0c97f;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.18);
+  letter-spacing: 2px;
+  text-shadow: 0 0 8px #3a2a4d, 0 0 2px #e0c97f;
+}
+
+.nav-item {
+  margin: 0 24px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.nav-item:hover {
+  color: #7fffd4;
+  text-shadow: 0 0 8px #7fffd4, 0 0 2px #fff;
+}
+
+.nav-auth {
+  margin-left: 32px;
+}
+
+.nav-item.active {
+  color: #ffe600;
+  text-shadow: 0 0 8px #ffe600, 0 0 2px #fff;
+  border-bottom: 2.5px solid #ffe600;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 48px;
+}
+
+.numerology-form {
+  background: rgba(44, 20, 60, 0.85);
+  border-radius: 16px;
+  padding: 32px 40px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 320px;
+  max-width: 400px;
+  width: 100%;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  color: #e0c97f;
+}
+.numerology-form h2 {
+  color: #7fffd4;
+  text-align: center;
+  margin-bottom: 16px;
+  font-size: 2rem;
+  font-family: 'Cinzel', serif;
+  text-shadow: 0 0 12px #7fffd4, 0 0 2px #fff;
+}
+.numerology-form label {
+  color: #e0c97f;
+  font-size: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.numerology-form input,
+.numerology-form select {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  font-size: 1rem;
+  margin-top: 2px;
+  background: rgba(34, 20, 40, 0.85);
+  color: #e0c97f;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  box-shadow: 0 0 4px #7fffd4 inset;
+}
+.numerology-form input:focus,
+.numerology-form select:focus {
+  outline: 2px solid #7fffd4;
+}
+.dob-fields {
+  display: flex;
+  gap: 8px;
+}
+.calculate-btn {
+  margin-top: 16px;
+  padding: 12px 0;
+  background: linear-gradient(90deg, #7fffd4 0%, #23243a 100%);
+  color: #23243a;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  font-family: 'Cinzel', serif;
+  letter-spacing: 1px;
+  box-shadow: 0 0 8px #7fffd4;
+}
+.calculate-btn:hover {
+  background: #23243a;
+  color: #7fffd4;
+  box-shadow: 0 0 16px #7fffd4;
+}
+.result-area {
+  margin-top: 40px;
+  min-height: 120px;
+  width: 100%;
+  max-width: 700px;
+  background: rgba(44, 20, 60, 0.7);
+  border-radius: 12px;
+  box-shadow: 0 2px 24px rgba(0,0,0,0.18);
+  color: #e0c97f;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.numerology-report {
+  background: rgba(44, 20, 60, 0.92);
+  border-radius: 16px;
+  padding: 32px 36px;
+  color: #e0c97f;
+  box-shadow: 0 4px 32px #000a, 0 0 32px #7fffd4;
+  margin-top: 0;
+  width: 100%;
+  max-width: 700px;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+.numerology-report h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 24px;
+  font-family: 'Cinzel', serif;
+  color: #7fffd4;
+  text-shadow: 0 0 16px #7fffd4, 0 0 2px #fff;
+}
+.numerology-report section {
+  margin-bottom: 28px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(127,255,212,0.12);
+}
+.numerology-report section:last-child {
+  border-bottom: none;
+}
+.numerology-report h3 {
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+  color: #7fffd4;
+  font-family: 'Cinzel', serif;
+  text-shadow: 0 0 8px #7fffd4;
+}
+.numerology-report ul {
+  margin: 0 0 0 18px;
+  padding: 0;
+  font-size: 1.08rem;
+}
+.numerology-report li {
+  margin-bottom: 4px;
+}
+@media (max-width: 700px) {
+  .navbar {
+    flex-direction: column;
+    font-size: 1.5rem;
+    padding: 18px 0 12px 0;
+  }
+  .nav-item, .nav-auth {
+    margin: 8px 0;
+  }
+  .main-content {
+    margin-top: 24px;
+  }
+  .numerology-form {
+    padding: 18px 8px;
+    min-width: 0;
+    max-width: 98vw;
+  }
+  .result-area {
+    max-width: 98vw;
+    font-size: 1rem;
+  }
+  .intro-section, .numerology-report {
+    padding: 14px 6px;
+    max-width: 98vw;
+  }
+  .numerology-report h2 {
+    font-size: 1.3rem;
+  }
+  .numerology-report h3 {
+    font-size: 1.05rem;
+  }
+}
+
+/* Container, row, col layout for responsive */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+.main-container {
+  margin-top: 24px;
+}
+.row.form-report-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 32px;
+}
+.col {
+  flex: 1 1 350px;
+  min-width: 320px;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.col-form {
+  max-width: 400px;
+}
+.col-report {
+  max-width: 700px;
+}
+.card {
+  width: 100%;
+  box-sizing: border-box;
+}
+@media (max-width: 900px) {
+  .row.form-report-row {
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+  }
+  .col {
+    max-width: 98vw;
+    min-width: 0;
+  }
+  .col-form, .col-report {
+    max-width: 98vw;
+  }
+}
+@media (max-width: 600px) {
+  .container {
+    padding: 0 4px;
+  }
+  .row.form-report-row {
+    gap: 12px;
+    margin-top: 16px;
+  }
+}
+
+.numerology-bg-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 520px;
+  border-radius: 24px;
+  overflow: hidden;
+  margin: 0 auto 32px auto;
+  box-shadow: 0 4px 32px #000a, 0 0 32px #7fffd4;
+  background: rgba(26, 16, 38, 0.92);
+  max-width: 900px;
+}
+.numerology-bg-canvas {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+.numerology-bg-content {
+  position: relative;
+  z-index: 2;
+  padding: 40px 24px 32px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+@media (max-width: 900px) {
+  .numerology-bg-wrapper {
+    max-width: 98vw;
+    min-height: 420px;
+    border-radius: 14px;
+    margin-bottom: 18px;
+  }
+  .numerology-bg-content {
+    padding: 18px 4px 16px 4px;
+  }
+}
+
+.intro-section {
+  max-width: 700px;
+  margin: 40px auto 0 auto;
+  background: rgba(44, 20, 60, 0.85);
+  border-radius: 16px;
+  padding: 32px 36px 24px 36px;
+  color: rgb(192, 227, 239);
+  box-shadow: 0 2px 24px 0 #000a 0 0 32px #7fffd4;
+  text-align: center;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
