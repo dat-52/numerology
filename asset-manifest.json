@@ -1,20 +1,21 @@
 {
   "files": {
-    "main.css": "/numerology/static/css/main.5f928c1c.css",
-    "main.js": "/numerology/static/js/main.4f1c60c1.js",
+    "main.css": "/numerology/static/css/main.13e353d7.css",
+    "main.js": "/numerology/static/js/main.b72f3299.js",
     "static/js/977.107bff65.chunk.js": "/numerology/static/js/977.107bff65.chunk.js",
     "static/js/732.cbfb5964.chunk.js": "/numerology/static/js/732.cbfb5964.chunk.js",
     "static/js/453.f1bcfb06.chunk.js": "/numerology/static/js/453.f1bcfb06.chunk.js",
     "static/media/kidbg.png": "/numerology/static/media/kidbg.4bfe43934b234ea69b9b.png",
+    "static/media/logo.png": "/numerology/static/media/logo.7ae3fa8b8cd6784c7b83.png",
     "index.html": "/numerology/index.html",
-    "main.5f928c1c.css.map": "/numerology/static/css/main.5f928c1c.css.map",
-    "main.4f1c60c1.js.map": "/numerology/static/js/main.4f1c60c1.js.map",
+    "main.13e353d7.css.map": "/numerology/static/css/main.13e353d7.css.map",
+    "main.b72f3299.js.map": "/numerology/static/js/main.b72f3299.js.map",
     "977.107bff65.chunk.js.map": "/numerology/static/js/977.107bff65.chunk.js.map",
     "732.cbfb5964.chunk.js.map": "/numerology/static/js/732.cbfb5964.chunk.js.map",
     "453.f1bcfb06.chunk.js.map": "/numerology/static/js/453.f1bcfb06.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5f928c1c.css",
-    "static/js/main.4f1c60c1.js"
+    "static/css/main.13e353d7.css",
+    "static/js/main.b72f3299.js"
   ]
 }
