@@ -21,6 +21,11 @@ function WhiteSection() {
         <p>
           Numerology is a 4000-year-old science based on the mathematics of the universe. By examining the meaning of your name and birthdate, we can uncover many surprising truths hidden within your 3 charts and over 20 unique indicators, including your strengths, weaknesses, and the relationships between your actions and your path to true happiness.
         </p>
+        <h3>Numerology Is Only the Beginning…</h3>
+        <p>You've already taken the first step by exploring the power of your numbers — now imagine what’s possible when you truly align with them.
+As patterns reveal themselves and deeper meanings begin to surface, remember this: the more you understand your personal blueprint, the more confident, fulfilled, and in control you become.
+Whether you're seeking answers, healing, or a life that feels more aligned — numerology is your compass. Let it guide you further.
+🌟 Explore your full report and take the next step on your journey.</p>
       </div>
       <div className="white-section-images">
         {images.map((src, i) => (

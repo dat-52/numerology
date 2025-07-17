@@ -3,13 +3,11 @@ import React from 'react';
 function IntroSection() {
   return (
     <div className="intro-section container">
-      <h1>Discover Your True Self with Numerology</h1>
+      <h1>Reveal What Your Name & Birthday Say About You</h1>
       <p>
-        Numerology is a 4000-year-old science based on the mathematics of the universe. By examining the meaning of your name and birthdate, we can uncover many surprising truths hidden within your charts and unique indicators. These insights include your strengths, weaknesses, and the relationships between your actions and your path to true happiness.
-      </p>
+      Numerology is a 4,000-year-old science that uncovers your purpose, strengths, and hidden challenges all through your name and birthdate.      </p>
       <p>
-        Enter your information below to receive a personalized numerology report, including your Life Path Number, Strength Chart, Personality, Opportunities, Challenges, and more!
-      </p>
+      Get your FREE preview numerology report in seconds. Includes your Life Path Number and key insights about your unique personality.      </p>
     </div>
   );
 }

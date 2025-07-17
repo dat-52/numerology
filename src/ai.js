@@ -5,9 +5,47 @@ const OPENROUTER_API_KEY = process.env.REACT_APP_OPENROUTER_API_KEY; // <-- Äiá
 export async function fetchNumerologyReport(form, type = 'adult') {
   let prompt = '';
   if (type === 'adult') {
-    prompt = `Give me a detailed numerology report for this person:\nFull name: ${form.fullName}\nNickname: ${form.commonName}\nGender: ${form.gender}\nDate of birth: ${form.day}/${form.month}/${form.year}\nThe report should include: Life Path Number, Strengths, Weaknesses, Personality, Opportunities, Challenges, and other relevant numerology insights.`;
+    prompt = `Generate a detailed numerology report for the following person. Use the provided numbers and information. Structure the report into 5 clear sections with headings:
+
+A. Overview Analysis
+B. Life Path Analysis
+C. Destiny Analysis
+D. Soul Urge Analysis
+E. Ability Analysis
+
+For each section, provide in-depth insights and practical advice. Use the following data:
+Full name: ${form.fullName}
+Nickname: ${form.commonName}
+Gender: ${form.gender}
+Date of birth: ${form.day}/${form.month}/${form.year}
+Life Path Number: ${form.numbers?.so_chu_dao}
+Destiny Number: ${form.numbers?.su_menh}
+Soul Urge Number: ${form.numbers?.linh_hon}
+Attitude Number: ${form.numbers?.thai_do}
+Personality Number: ${form.numbers?.nhan_cach}
+Maturity Number: ${form.numbers?.truong_thanh}
+Quintessence Number: ${form.numbers?.tu_duy}
+
+Please write the report in English, use clear section headings (A, B, C, D, E), and make the analysis easy to read and actionable.`;
   } else {
-    prompt = `Give me a detailed numerology report for a child and their parents:\nChild's name: ${form.childName}\nGender: ${form.childGender}\nDate of birth: ${form.childDay}/${form.childMonth}/${form.childYear}\nFather's name: ${form.fatherName}\nFather's date of birth: ${form.fatherDay}/${form.fatherMonth}/${form.fatherYear}\nMother's name: ${form.motherName}\nMother's date of birth: ${form.motherDay}/${form.motherMonth}/${form.motherYear}\nThe report should include: Child's potential, early life timeline, parenting solutions, compatibility or conflict between parents and child, suitable career directions, and other relevant numerology insights for children.`;
+    prompt = `Generate a detailed numerology report for a child and their parents. Structure the report into 5 clear sections with headings:
+
+A. Overview Analysis
+B. Life Path Analysis
+C. Destiny Analysis
+D. Soul Urge Analysis
+E. Ability Analysis
+
+For each section, provide in-depth insights and practical advice. Use the following data:
+Child's name: ${form.childName}
+Gender: ${form.childGender}
+Date of birth: ${form.childDay}/${form.childMonth}/${form.childYear}
+Father's name: ${form.fatherName}
+Father's date of birth: ${form.fatherDay}/${form.fatherMonth}/${form.fatherYear}
+Mother's name: ${form.motherName}
+Mother's date of birth: ${form.motherDay}/${form.motherMonth}/${form.motherYear}
+
+Please write the report in English, use clear section headings (A, B, C, D, E), and make the analysis easy to read and actionable.`;
   }
   const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
     method: 'POST',

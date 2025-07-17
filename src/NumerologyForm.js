@@ -1,9 +1,12 @@
 import React, { useState, useRef } from 'react';
 import { fetchNumerologyReport } from './ai';
+import { calculateAllNumbers, calculatePinnacleCycles } from './utils/numerology';
+import NumerologySummaryView from './NumerologySummaryView';
+import NumerologyReport from './NumerologyReport'; // Added import for NumerologyReport
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 
-function NumerologyForm({ onCalculate }) {
+function NumerologyForm({ onCalculate, user, onRequireAuth }) {
   const [form, setForm] = useState({
     fullName: '',
     commonName: '',
@@ -15,6 +18,10 @@ function NumerologyForm({ onCalculate }) {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState('');
   const resultRef = useRef();
+  const [numbers, setNumbers] = useState(null);
+  const [showDetail, setShowDetail] = useState(false);
+  const [cycleData, setCycleData] = useState([]);
+  const [cycleLabels, setCycleLabels] = useState([]);
 
   const days = Array.from({ length: 31 }, (_, i) => i + 1);
   const months = [
@@ -25,10 +32,25 @@ function NumerologyForm({ onCalculate }) {
 
   const handleSubmit = async e => {
     e.preventDefault();
+    if (!user) {
+      if (onRequireAuth) onRequireAuth();
+      return;
+    }
     setLoading(true);
     setResult('');
+    setShowDetail(false);
     try {
-      const aiResult = await fetchNumerologyReport(form, 'adult');
+      // Ghép ngày sinh thành chuỗi dd/mm/yyyy
+      const dob = `${form.day.toString().padStart(2, '0')}/${form.month.toString().padStart(2, '0')}/${form.year}`;
+      // Tính các con số thần số học
+      const nums = calculateAllNumbers(form.fullName, dob);
+      setNumbers(nums);
+      // Tính chu kỳ số học
+      const { cycles, labels } = calculatePinnacleCycles(dob);
+      setCycleData(cycles);
+      setCycleLabels(labels);
+      // Gửi cả dữ liệu nhập và các số cho AI
+      const aiResult = await fetchNumerologyReport({ ...form, dob, numbers: nums }, 'adult');
       setResult(aiResult);
     } catch (err) {
       setResult('Sorry, something went wrong.');
@@ -86,12 +108,28 @@ function NumerologyForm({ onCalculate }) {
         </label>
         <button type="submit" className="calculate-btn">{loading ? 'Calculating...' : 'Calculate'}</button>
       </form>
-      <div className="result-area" ref={resultRef}>
-        {loading && <span>Loading AI result...</span>}
-        {!loading && result && <div style={{whiteSpace: 'pre-line'}}>{result}</div>}
-      </div>
-      {!loading && result && (
-        <button className="download-pdf-btn" onClick={handleDownloadPDF} style={{marginTop: 16}}>Download PDF</button>
+      {/* Hiển thị các số thần số học sau khi tính */}
+      {numbers && !loading && (
+        <NumerologySummaryView
+          name={form.fullName}
+          dob={`${form.day.toString().padStart(2, '0')}/${form.month.toString().padStart(2, '0')}/${form.year}`}
+          numbers={numbers}
+          onShowDetail={() => setShowDetail(true)}
+          cycleData={cycleData}
+          cycleLabels={cycleLabels}
+        />
+      )}
+      {/* Hiển thị luận giải chi tiết ở NumerologyReport card */}
+      {showDetail && (
+        <NumerologyReport
+          form={form}
+          numbers={numbers}
+          result={result}
+          loading={loading}
+          resultRef={resultRef}
+          onDownloadPDF={handleDownloadPDF}
+          onCloseDetail={() => setShowDetail(false)}
+        />
       )}
     </>
   );

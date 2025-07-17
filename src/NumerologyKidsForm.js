@@ -6,7 +6,7 @@ import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import './NumerologyKidsForm.css';
 
-function NumerologyKidsForm() {
+function NumerologyKidsForm({ user, onRequireAuth }) {
   const [form, setForm] = useState({
     childName: '',
     childGender: '',
@@ -37,6 +37,10 @@ function NumerologyKidsForm() {
 
   const handleSubmit = async e => {
     e.preventDefault();
+    if (!user) {
+      if (onRequireAuth) onRequireAuth();
+      return;
+    }
     setLoading(true);
     setResult('');
     try {

@@ -87,7 +87,7 @@ function App() {
         <BlogPage />
       ) : page === 'kids' ? (
         <div className="container main-container">
-          <NumerologyKidsForm />
+          <NumerologyKidsForm user={user} onRequireAuth={() => setAuthOpen(true)} />
         </div>
       ) : (
         <>
@@ -97,7 +97,7 @@ function App() {
               <IntroSection />
               <div className="row form-report-row">
                 <div className="col col-form">
-                  <NumerologyForm onCalculate={handleCalculate} />
+                  <NumerologyForm onCalculate={handleCalculate} user={user} onRequireAuth={() => setAuthOpen(true)} />
                 </div>
               </div>
             </NumerologyBackground>

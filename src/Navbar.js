@@ -1,8 +1,12 @@
 import React from 'react';
+import logo from './assets/logo.png';
 
 function Navbar({ onSelectPage, currentPage, user, onAuthClick }) {
   return (
     <nav className="navbar">
+      <div className="nav-logo" onClick={() => onSelectPage('adult')}>
+        <img src={logo} alt="Logo" className="logo-img" />
+      </div>
       <div
         className={`nav-item${currentPage === 'adult' ? ' active' : ''}`}
         onClick={() => onSelectPage('adult')}

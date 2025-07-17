@@ -1,0 +1,46 @@
+.numerology-summary-view {
+  background: rgba(44, 20, 60, 0.92);
+  border-radius: 18px;
+  padding: 32px 24px 24px 24px;
+  color: #fff;
+  box-shadow: 0 4px 32px #000a, 0 0 32px #7fffd4;
+  max-width: 700px;
+  width: 100%;
+  margin: 0 auto 32px auto;
+  text-align: center;
+  position: relative;
+  box-sizing: border-box;
+}
+.numbers-row {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.number-card {
+  background: rgba(80, 20, 100, 0.85);
+  border-radius: 10px;
+  padding: 14px 22px;
+  min-width: 100px;
+  color: #fff;
+  box-shadow: 0 2px 12px #0005;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 8px;
+}
+@media (max-width: 700px) {
+  .numerology-summary-view {
+    padding: 16px 8px 14px 8px;
+    max-width: 98vw;
+  }
+  .numbers-row {
+    gap: 10px;
+  }
+  .number-card {
+    padding: 10px 8px;
+    min-width: 80px;
+  }
+}
